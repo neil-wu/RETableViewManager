@@ -99,11 +99,18 @@
     if ([self.item isKindOfClass:[NSString class]]) {
         self.textLabel.text = (NSString *)self.item;
         self.textLabel.backgroundColor = [UIColor clearColor];
+        self.textLabel.textColor = self.item.titleColor;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     } else {
         RETableViewItem *item = (RETableViewItem *)self.item;
         self.textLabel.text = item.title;
         self.textLabel.backgroundColor = [UIColor clearColor];
+        self.textLabel.textColor = self.item.titleColor;
+        self.textLabel.font = [UIFont systemFontOfSize:14]; //neilwu mod
+        /*
+        self.textLabel.textColor = [UIColor lightGrayColor];
+        self.textLabel.tintColor = [UIColor lightGrayColor];
+        */
         self.accessoryType = item.accessoryType;
         self.accessoryView = item.accessoryView;
         self.textLabel.textAlignment = item.textAlignment;
@@ -171,16 +178,15 @@
 - (void)layoutDetailView:(UIView *)view minimumWidth:(CGFloat)minimumWidth
 {
     CGFloat cellOffset = 10.0;
-    CGFloat fieldOffset = 10.0;
+    //CGFloat fieldOffset = 10.0;
     
     if (self.section.style.contentViewMargin <= 0)
         cellOffset += 5.0;
     
-    UIFont *font = self.textLabel.font;
-    
+    //UIFont *font = self.textLabel.font;
     CGRect frame = CGRectMake(0, self.textLabel.frame.origin.y, 0, self.textLabel.frame.size.height);
     if (self.item.title.length > 0) {
-        frame.origin.x = [self.section maximumTitleWidthWithFont:font] + cellOffset + fieldOffset;
+        frame.origin.x = 82; /*[self.section maximumTitleWidthWithFont:font] + cellOffset + fieldOffset;*/
     } else {
         frame.origin.x = cellOffset;
     }
@@ -189,6 +195,14 @@
         CGFloat diff = minimumWidth - frame.size.width;
         frame.origin.x = frame.origin.x - diff;
         frame.size.width = minimumWidth;
+    }
+    if (self.item.accessoryType == UITableViewCellAccessoryNone) {
+        //neilwu mod, do't add space here !!!!
+        ///frame.origin.x -= 10;
+        //frame.origin.y -= 2;
+    } else {
+        frame.origin.x += 10;
+        frame.origin.y -= 2;
     }
     
     view.frame = frame;

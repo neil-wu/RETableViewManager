@@ -50,11 +50,18 @@
 - (void)cellDidLoad
 {
     [super cellDidLoad];
+    self.textLabel.font = [UIFont systemFontOfSize:14]; //neilwu mod
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.switchView = [[UISwitch alloc] init];
     self.switchView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.switchView addTarget:self action:@selector(switchValueDidChange:) forControlEvents:UIControlEventValueChanged];
+    /*
+    CGRect frameRect = self.switchView.frame;
+    frameRect.size.width = 46;
+    frameRect.size.height = 20;
+    self.switchView.frame = frameRect; */
+    
     [self.contentView addSubview:self.switchView];
 
     CGFloat margin = (self.section.style.contentViewMargin <= 0) ? 15.0 : 10.0;

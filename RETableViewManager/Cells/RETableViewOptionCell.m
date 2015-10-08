@@ -53,8 +53,11 @@
     [super cellDidLoad];
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
+    self.textLabel.font = [UIFont systemFontOfSize:14]; //neilwu mod this
+    //self.detailTextLabel.font = [UIFont systemFontOfSize:14]; //neilwu mod this
+    
     self.valueLabel = [[UILabel alloc] initWithFrame:CGRectNull];
-    self.valueLabel.font = [UIFont systemFontOfSize:17];
+    self.valueLabel.font = [UIFont systemFontOfSize:14];
     self.valueLabel.backgroundColor = [UIColor clearColor];
     self.valueLabel.textColor = self.detailTextLabel.textColor;
     self.valueLabel.highlightedTextColor = [UIColor whiteColor];

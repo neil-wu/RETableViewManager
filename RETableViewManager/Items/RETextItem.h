@@ -51,6 +51,8 @@
 @property (assign, readwrite, nonatomic) BOOL enablesReturnKeyAutomatically;                  // default is NO (when YES, will automatically disable return key when text widget has zero-length contents, and will automatically enable when text widget has non-zero-length contents)
 @property (assign, readwrite, nonatomic) BOOL secureTextEntry;                                // default is NO
 
+@property (assign, readwrite, nonatomic) BOOL valueTxtRightAlign;                             // default is NO, neilwu add this
+
 @property (copy, readwrite, nonatomic) void (^onBeginEditing)(RETextItem *item);
 @property (copy, readwrite, nonatomic) void (^onEndEditing)(RETextItem *item);
 @property (copy, readwrite, nonatomic) void (^onChange)(RETextItem *item);

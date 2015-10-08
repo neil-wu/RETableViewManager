@@ -56,6 +56,7 @@
         return nil;
     
     self.title = title;
+    self.titleColor = [UIColor darkTextColor];
     
     return self;
 }
@@ -72,6 +73,7 @@
         return nil;
     
     self.title = title;
+    self.titleColor = [UIColor darkTextColor];
     self.accessoryType = accessoryType;
     self.selectionHandler = selectionHandler;
     self.accessoryButtonTapHandler = accessoryButtonTapHandler;

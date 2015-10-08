@@ -95,6 +95,7 @@ CGFloat const RETableViewSectionFooterHeightAutomatic = DBL_MAX;
     self.headerTitle = headerTitle;
     self.footerTitle = footerTitle;
     
+    
     return self;
 }
 

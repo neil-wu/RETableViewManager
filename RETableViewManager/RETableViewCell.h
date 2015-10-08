@@ -42,6 +42,7 @@ typedef NS_ENUM(NSInteger, RETableViewCellType) {
  The `RETableViewCell` class defines the attributes and behavior of the cells that appear in `UITableView` objects.
  
  */
+
 @interface RETableViewCell : UITableViewCell <REActionBarDelegate>
 
 ///-----------------------------

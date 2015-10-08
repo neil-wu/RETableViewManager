@@ -54,6 +54,7 @@
 {
     [super cellDidLoad];
     self.textLabel.backgroundColor = [UIColor clearColor];
+    self.textLabel.font = [UIFont systemFontOfSize:14]; //neilwu add
     
     self.textField = [[UITextField alloc] initWithFrame:CGRectNull];
     self.textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -62,6 +63,7 @@
     self.textField.delegate = self;
     [self.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.contentView addSubview:self.textField];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -78,9 +80,10 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     self.textLabel.text = self.item.title.length == 0 ? @" " : self.item.title;
+    
     self.textField.text = self.item.value;
     self.textField.placeholder = self.item.placeholder;
-    self.textField.font = [UIFont systemFontOfSize:17];
+    self.textField.font = [UIFont systemFontOfSize:14]; //neilwu mod
     self.textField.autocapitalizationType = self.item.autocapitalizationType;
     self.textField.autocorrectionType = self.item.autocorrectionType;
     self.textField.spellCheckingType = self.item.spellCheckingType;
@@ -91,6 +94,14 @@
     self.textField.secureTextEntry = self.item.secureTextEntry;
     self.textField.clearButtonMode = self.item.clearButtonMode;
     self.textField.clearsOnBeginEditing = self.item.clearsOnBeginEditing;
+    if (self.item.valueTxtRightAlign) {
+        self.textField.textAlignment = NSTextAlignmentRight;
+    }
+    //self.textField.textColor = self.textLabel.textColor; //[[UIColor alloc] initWithRed:186 green:194 blue:196 alpha:1 ];
+    //neilwu mod  //
+    //[self.textField setTextColor:[[UIColor alloc] initWithRed:186 green:194 blue:196 alpha:1 ]];
+    self.textField.textColor = [UIColor lightGrayColor];
+    self.textField.tintColor = [UIColor lightGrayColor];
     
     self.actionBar.barStyle = self.item.keyboardAppearance == UIKeyboardAppearanceAlert ? UIBarStyleBlack : UIBarStyleDefault;
     
